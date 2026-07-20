@@ -1,0 +1,7 @@
+<div class="container yellow">
+  <h1>{{ title() }}</h1>
+  <button (click)="sendMessage()">Send Message to MFE 1</button>
+  @if (incomingMessage()) {
+    <p class="message">Received: {{ incomingMessage() }}</p>
+  }
+</div>
