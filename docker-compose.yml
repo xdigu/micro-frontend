@@ -1,0 +1,43 @@
+services:
+  mfe1-react:
+    build:
+      context: ./mfe1-react
+      dockerfile: Dockerfile
+    container_name: mfe1-react
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./mfe1-react:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
+
+  mfe2-angular:
+    build:
+      context: ./mfe2-angular
+      dockerfile: Dockerfile
+    container_name: mfe2-angular
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./mfe2-angular:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=1
+
+  host-nextjs:
+    build:
+      context: ./host-nextjs
+      dockerfile: Dockerfile
+    container_name: host-nextjs
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./host-nextjs:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - HOSTNAME=0.0.0.0
+    depends_on:
+      - mfe1-react
+      - mfe2-angular

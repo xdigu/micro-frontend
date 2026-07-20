@@ -16,25 +16,63 @@ Each MFE exposes functions `mount(el)` and `unmount(el)` via ModuleFederationPlu
 
 Cross-MFE communication is done via `CustomEvent('mfe:message')` dispatched on `window`.
 
-## Running
+## Docker
 
-Open **3 terminals** and run:
+All three projects can run together with a single command.
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+### Quick start
 
 ```bash
-# Terminal 1 — MFE React
-cd mfe1-react
-npm start
+make build   # build images (first time only)
+make up      # start all containers in background
+```
 
-# Terminal 2 — MFE Angular
-cd mfe2-angular
-npm start
+Or without Make:
 
-# Terminal 3 — Host (Next.js)
-cd host-nextjs
-npm run dev
+```bash
+docker compose up --build -d
 ```
 
 Open **http://localhost:3003** in your browser.
+
+### Commands
+
+| `make` | `docker compose` | Description |
+|---|---|---|
+| `make up` | `docker compose up -d` | Start containers |
+| `make down` | `docker compose down` | Stop and remove containers |
+| `make logs` | `docker compose logs -f` | Follow logs |
+| `make build` | `docker compose build` | Build images |
+| `make rebuild` | `docker compose up --build -d` | Rebuild and start |
+| `make restart` | `docker compose restart` | Restart containers |
+| `make ps` | `docker compose ps` | List containers |
+| `make clean` | `docker compose down -v` | Remove containers + volumes |
+
+### Architecture
+
+| Service | Container port | Host port |
+|---|---|---|
+| `mfe1-react` | 3001 | 3001 |
+| `mfe2-angular` | 3002 | 3002 |
+| `host-nextjs` | 3003 | 3003 |
+
+- Source code is mounted as a bind volume for live hot-reload
+- `node_modules` is kept inside the container (anonymous volume) to avoid host/OS conflicts
+- File watchers use polling (`WATCHPACK_POLLING`, `CHOKIDAR_USEPOLLING`) for reliable change detection in Docker
+
+### Manual setup (without Docker)
+
+Open **3 terminals**:
+
+```bash
+cd mfe1-react && npm start          # Terminal 1
+cd mfe2-angular && npm start        # Terminal 2
+cd host-nextjs && npm run dev       # Terminal 3
+```
 
 ## Expected result
 
