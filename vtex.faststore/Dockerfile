@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim
+FROM node:24-bookworm-slim
 
 ENV APP_HOME=/workspace \
     YARN_CACHE_FOLDER=/usr/local/share/.cache/yarn \

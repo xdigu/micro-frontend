@@ -87,7 +87,7 @@ module.exports = {
   },
 
   experimental: {
-    nodeVersion: 22,
+    nodeVersion: 24,
     cypressVersion: 12,
   },
 
