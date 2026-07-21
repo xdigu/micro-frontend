@@ -42,13 +42,13 @@ export default function MfeHost() {
     async function loadMfes() {
       try {
         console.log('[MfeHost] Loading MFE scripts...')
-        await loadScript('http://localhost:3001/main.js')
+        await loadScript('https://react-mfe.xdigu.link/main.js')
         console.log('[MfeHost] MFE1 main.js loaded, waiting for global...')
         const mfe1 = await waitForGlobal('mfe1_react')
         console.log('[MfeHost] MFE1 ready:', mfe1)
 
-        await loadScript('http://localhost:3002/styles.js')
-        await loadScript('http://localhost:3002/main.js')
+        await loadScript('https://angular-mfe.xdigu.link/styles.js')
+        await loadScript('https://angular-mfe.xdigu.link/main.js')
         console.log('[MfeHost] MFE2 main.js loaded, waiting for global...')
         const mfe2 = await waitForGlobal('mfe2_angular')
         console.log('[MfeHost] MFE2 ready:', mfe2)

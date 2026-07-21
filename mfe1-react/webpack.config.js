@@ -4,7 +4,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 module.exports = {
   entry: './src/index.js',
   output: {
-    publicPath: '/',
+    publicPath: 'https://react-mfe.xdigu.link/',
     crossOriginLoading: 'anonymous',
     clean: true,
   },

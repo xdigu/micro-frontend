@@ -17,7 +17,7 @@ const config = withModuleFederationPlugin({
 
 config.output = {
   ...config.output,
-  publicPath: '/',
+  publicPath: 'https://angular-mfe.xdigu.link/',
 };
 
 module.exports = config;
