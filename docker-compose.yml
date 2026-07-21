@@ -54,8 +54,6 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - path: ./vtex.env
-        required: false
       - path: ./.env
         required: false
     environment:
