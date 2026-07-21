@@ -16,7 +16,7 @@ module.exports = {
   // Platform specific configs for API
   api: {
     storeId: process.env.ACCOUNT_NAME,
-    workspace: 'rodrigojorge',
+    workspace: process.env.WORKSPACE,
     environment: 'vtexcommercestable',
     hideUnavailableItems: true,
     incrementAddress: false,
@@ -87,7 +87,7 @@ module.exports = {
   },
 
   experimental: {
-    nodeVersion: 18,
+    nodeVersion: 22,
     cypressVersion: 12,
   },
 
