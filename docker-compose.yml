@@ -41,3 +41,32 @@ services:
     depends_on:
       - mfe1-react
       - mfe2-angular
+
+  faststore:
+    container_name: vtex-faststore-dev
+    build:
+      context: ./vtex.faststore
+      dockerfile: Dockerfile
+    image: vtex-faststore-dev:local
+    restart: unless-stopped
+    init: true
+    working_dir: /workspace
+    ports:
+      - "3000:3000"
+    env_file:
+      - path: ./vtex.env
+        required: false
+      - path: ./.env
+        required: false
+    environment:
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
+      YARN_CACHE_FOLDER: /usr/local/share/.cache/yarn
+    volumes:
+      - ./vtex.faststore:/workspace:delegated
+      - node_modules_cache:/workspace/node_modules
+      - yarn_cache:/usr/local/share/.cache/yarn
+
+volumes:
+  node_modules_cache:
+  yarn_cache:

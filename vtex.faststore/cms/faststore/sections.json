@@ -1,0 +1,11 @@
+[
+  {
+    "name": "MfeHost",
+    "schema": {
+      "title": "Mfe host",
+      "type": "object",
+      "description": "",
+      "properties": {}
+    }
+  }
+]
