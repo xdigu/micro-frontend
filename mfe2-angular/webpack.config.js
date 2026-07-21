@@ -17,7 +17,7 @@ const config = withModuleFederationPlugin({
 
 config.output = {
   ...config.output,
-  publicPath: 'http://localhost:3002/',
+  publicPath: '/',
 };
 
 module.exports = config;

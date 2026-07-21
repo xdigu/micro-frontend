@@ -4,7 +4,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 module.exports = {
   entry: './src/index.js',
   output: {
-    publicPath: 'http://localhost:3001/',
+    publicPath: '/',
     crossOriginLoading: 'anonymous',
     clean: true,
   },
