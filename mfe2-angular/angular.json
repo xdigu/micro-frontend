@@ -82,6 +82,7 @@
           "options": {
             "port": 3002,
             "publicHost": "http://localhost:3002",
+            "allowedHosts": ["all"],
             "extraWebpackConfig": "webpack.config.js",
             "headers": {
               "Access-Control-Allow-Origin": "*",

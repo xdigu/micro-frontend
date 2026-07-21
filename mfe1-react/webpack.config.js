@@ -45,6 +45,7 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
       'Cross-Origin-Resource-Policy': 'cross-origin',
     },
+    allowedHosts: 'all',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
